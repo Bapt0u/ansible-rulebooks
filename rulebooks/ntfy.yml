@@ -1,0 +1,13 @@
+---
+- name: Send notification to ntfy.sh instance
+  hosts: localhost
+  sources:
+    - name: webhook1
+      ansible.eda.webhook:
+        port: 5000
+
+  rules:
+    - name: Say ok
+      condition: event.payload.status == "OK"
+      action:
+        debug:
